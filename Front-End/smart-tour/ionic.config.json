@@ -1,0 +1,8 @@
+{
+  "name": "Smart Tour",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

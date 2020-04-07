@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large">
+      Start Tour
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-map *ngIf="(coordinates|async) as coords" [coords]="coords"></app-map>
+  
+</ion-content>
