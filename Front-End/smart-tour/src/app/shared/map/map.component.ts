@@ -1,4 +1,6 @@
+/// <reference types="@types/googlemaps" />
 import { Component, AfterViewInit, Input } from '@angular/core';
+// var google:any;
 
 @Component({
   selector: 'app-map',

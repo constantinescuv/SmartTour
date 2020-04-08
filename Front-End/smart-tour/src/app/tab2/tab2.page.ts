@@ -3,7 +3,8 @@ import { Capacitor, Plugins, GeolocationPosition } from '@capacitor/core';
 import { Observable, of, from as fromPromise } from 'rxjs';
 import { tap, map, switchMap } from 'rxjs/operators';
 
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, ModalController } from '@ionic/angular';
+import { ModalPage } from '../modal/modal.page';
 
 const { Toast, Geolocation } = Capacitor.Plugins;
 
@@ -17,9 +18,11 @@ export class Tab2Page {
   public coordinates: Observable<GeolocationPosition>;
   public defaultPos: { latitude: 42, longitude: 42 };
 
-  constructor(public loading: LoadingController, public alertCtrl: AlertController){
+  constructor(public loading: LoadingController, public alertCtrl: AlertController, private modalCtrl: ModalController){
 
   }
+
+  public data: string;
 
   ngOnInit() {
     //start the loader
@@ -38,6 +41,19 @@ export class Tab2Page {
             return null;
           });
       });
+  }
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalPage,
+      // componentProps: {
+      //   send_data: this.send_data
+      // }
+    });
+    modal.onWillDismiss().then(dataReturned => {
+      this.data = dataReturned.data;
+    })
+    return await modal.present();
   }
 
   async displayLoader() {

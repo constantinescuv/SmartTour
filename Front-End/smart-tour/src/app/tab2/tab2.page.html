@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content>
+
   <app-map *ngIf="(coordinates|async) as coords" [coords]="coords"></app-map>
   
+  <div class="center">
+    <ion-button (click)="openModal()" color="primary">Configure Tour</ion-button>
+  </div>
+  <!-- <ion-text>
+    <p>Data (modal data): <strong>{{data | json}}</strong></p>
+  </ion-text> -->
+
 </ion-content>
