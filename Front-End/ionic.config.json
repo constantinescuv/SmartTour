@@ -1,7 +1,0 @@
-{
-  "name": "Smart Tour",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}

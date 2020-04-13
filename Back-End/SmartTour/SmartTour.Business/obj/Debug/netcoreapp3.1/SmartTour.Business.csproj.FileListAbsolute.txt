@@ -1,0 +1,11 @@
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.deps.json
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.pdb
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csprojAssemblyReference.cache
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.AssemblyInfoInputs.cache
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.AssemblyInfo.cs
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.pdb
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.pdb
+E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csproj.CopyComplete

@@ -1,0 +1,13 @@
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.csprojAssemblyReference.cache
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.AssemblyInfoInputs.cache
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.AssemblyInfo.cs
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.deps.json
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.runtimeconfig.json
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.runtimeconfig.dev.json
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.pdb
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.Domain.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Debug\netcoreapp3.1\SmartTour.Domain.pdb
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.csproj.CopyComplete
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.dll
+E:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Debug\netcoreapp3.1\SmartTour.DataAccess.pdb
