@@ -230,4 +230,17 @@
     --color: white;
   }
 
+  
+}
+
+ion-popover{
+  ion-backdrop{
+    opacity: 0.5 !important;
+  }
+  .popover-wrapper{
+    .popover-content{
+      width:60vw;
+      max-width:500px;
+    }
+  }
 }

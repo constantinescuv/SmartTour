@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private navController: NavController, private toastController: ToastController) {}
 
   ngOnInit() {
+    if(!localStorage.getItem('user')) {
+      this.navController.navigateForward(['login'], { animated: false });
+      this.notLoggedInToast();
+    }
+  }
+
+  async notLoggedInToast() {
+    const toast = await this.toastController.create({
+      message: 'You are not logged in!',
+      color: 'danger',
+      duration: 2000
+    });
+
+    toast.present();
   }
 
 }

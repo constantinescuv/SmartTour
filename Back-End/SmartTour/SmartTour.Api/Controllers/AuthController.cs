@@ -57,7 +57,7 @@ namespace SmartTour.Api.Controllers
                 }
                 if (dbEntry.Passw == user.Passw)
                 {
-                    return Ok();
+                    return Ok(dbEntry);
                 }
 
                 else return BadRequest();

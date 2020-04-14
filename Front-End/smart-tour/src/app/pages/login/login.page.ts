@@ -15,48 +15,53 @@ export class LoginPage implements OnInit {
     passw: ''
     };
     
-    constructor(
-    private authService: AuthService,
-    private navController: NavController,
-    private toastController: ToastController
-    ) {}
+  constructor(
+  private authService: AuthService,
+  private navController: NavController,
+  private toastController: ToastController
+  ) {}
     
-    ngOnInit() {}
-    
-    // validateInputs() {
-    // let username = this.postData.username.trim();
-    // let password = this.postData.password.trim();
-    // return (
-    // this.postData.username &&
-    // this.postData.password &&
-    // username.length > 0 &&
-    // password.length > 0
-    // );
-    // }
-    
-    async loginAction() {
-      try { 
-        const res = await this.authService.login(this.postData);
-  
-        const toast = await this.toastController.create({
-          message: 'Login succesfull!',
-          color: 'success',
-          duration: 2000
-        });
-  
-        toast.present();
-  
-        this.navController.navigateForward(['home'], { animated: false });
-      } catch {
-  
-        const toast = await this.toastController.create({
-          message: 'Error! Check credentials..',
-          color: 'danger',
-          duration: 2000
-        });
-  
-        toast.present();
-      }
+  ngOnInit() {
+    if(!!localStorage.getItem('user')) {
+      this.navController.navigateForward(['home'], { animated: false });
+      this.loggedInToast(JSON.parse(localStorage.getItem('user')).username);
+    }
   }
 
+  async loggedInToast(username: string) {
+    const toast = await this.toastController.create({
+      message: 'Logged in as ' + username,
+      color: 'primary',
+      duration: 2000
+    });
+
+    toast.present();
+  }
+    
+  async loginAction() {
+    try { 
+      const res = await this.authService.login(this.postData);
+
+      const toast = await this.toastController.create({
+        message: 'Login succesfull!',
+        color: 'success',
+        duration: 2000
+      });
+
+      toast.present();
+
+      localStorage.setItem('user', JSON.stringify(res.body));
+
+      this.navController.navigateForward(['home'], { animated: false });
+    } catch {
+
+      const toast = await this.toastController.create({
+        message: 'Error! Check credentials..',
+        color: 'danger',
+        duration: 2000
+      });
+
+      toast.present();
+    }
+  }
 }

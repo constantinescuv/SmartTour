@@ -3,7 +3,7 @@ import { Capacitor, Plugins, GeolocationPosition } from '@capacitor/core';
 import { Observable, of, from as fromPromise } from 'rxjs';
 import { tap, map, switchMap } from 'rxjs/operators';
 
-import { LoadingController, AlertController, ModalController } from '@ionic/angular';
+import { LoadingController, AlertController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { ModalPage } from '../../modal/modal.page';
 
 const { Toast, Geolocation } = Capacitor.Plugins;
@@ -18,15 +18,24 @@ export class StartPage {
   public coordinates: Observable<GeolocationPosition>;
   public defaultPos: { latitude: 42, longitude: 42 };
 
-  constructor(public loading: LoadingController, public alertCtrl: AlertController, private modalCtrl: ModalController){
+  constructor(public loading: LoadingController, 
+    public alertCtrl: AlertController, 
+    private modalCtrl: ModalController,
+    private navController: NavController,
+    private toastController: ToastController){
 
   }
 
   public data: string;
 
   ngOnInit() {
-    //start the loader
-    this.displayLoader()
+    if(!localStorage.getItem('user')) {
+      this.navController.navigateForward(['login'], { animated: false });
+      this.notLoggedInToast();
+    }
+    else {
+      //start the loader
+      this.displayLoader()
       .then((loader: any) => {
         //get position
         return this.getCurrentPosition()
@@ -41,6 +50,17 @@ export class StartPage {
             return null;
           });
       });
+    }
+  }
+
+  async notLoggedInToast() {
+    const toast = await this.toastController.create({
+      message: 'You are not logged in!',
+      color: 'danger',
+      duration: 2000
+    });
+
+    toast.present();
   }
 
   async openModal() {

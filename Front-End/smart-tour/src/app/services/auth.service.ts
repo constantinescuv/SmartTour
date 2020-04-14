@@ -8,11 +8,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(data: any) {
-    return this.http.post('https://localhost:44305/auth/register', data).toPromise();
+  register(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/register', data).toPromise();
   }
 
-  login(data: any) {
-    return this.http.post('https://localhost:44305/auth/login', data).toPromise();
+  login(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/login', data, {observe: 'response' as "body"}).toPromise();
   }
 }
