@@ -13,6 +13,6 @@ export class PopoverComponent implements OnInit {
   ngOnInit() {}
 
   NavigateToChangeProfile(){
-      this.router.navigate(['']);
+      this.router.navigate(['changeprofile']);
   }
 }

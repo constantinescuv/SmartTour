@@ -24,13 +24,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     if(!!localStorage.getItem('user')) {
       this.navController.navigateForward(['home'], { animated: false });
-      this.loggedInToast(JSON.parse(localStorage.getItem('user')).username);
+      this.loggedInToast(JSON.parse(localStorage.getItem('user')).firstName);
     }
   }
 
-  async loggedInToast(username: string) {
+  async loggedInToast(firstName: string) {
     const toast = await this.toastController.create({
-      message: 'Logged in as ' + username,
+      message: 'Logged in as ' + firstName,
       color: 'primary',
       duration: 2000
     });

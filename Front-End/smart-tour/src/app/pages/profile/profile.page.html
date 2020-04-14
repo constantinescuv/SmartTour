@@ -5,14 +5,14 @@
       <ion-icon name="menu-outline"></ion-icon>    
     </ion-button>
     <!-- <ion-button color="#03A9F4" (click)="presentPopover()"></ion-button> -->
-    <h2>Vlad Constantinescu</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
     <div class="space-between">
       <div class="followings">
-        <ion-badge color="primary" mode="ios">16</ion-badge>
+        <ion-badge color="primary" mode="ios">{{toursCompleted}}</ion-badge>
         <p>Completed Tours</p>
       </div>
       <div class="followings">
-        <ion-badge color="primary" mode="ios">42</ion-badge>
+        <ion-badge color="primary" mode="ios">{{placesVisited}}</ion-badge>
         <p>Places Visited</p>
       </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="box-border">
       <div class="border-white">
         <div class="img-box">
-          <img src="./assets/img/profile/513fcfdfc40b7607fefd31622b825b66.png">
+          <img src={{image}}>
         </div>
       </div>
     </div>
@@ -31,10 +31,10 @@
   <ion-card>
     <ion-item lines="none">
       <ion-avatar slot="start">
-        <img src="./assets/img/profile/513fcfdfc40b7607fefd31622b825b66.png" />
+        <img src={{image}} />
       </ion-avatar>
       <ion-label>
-        <h2><b>Vlad Constantinescu</b></h2>
+        <h2><b>{{firstName}} {{lastName}}</b></h2>
         <p>16 Mar</p>
       </ion-label>
     </ion-item>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace SmartTour.Domain
 {
-    public class LoginEntity
+    public class EditEntity
     {
         public string FirstName { get; set; }
 
@@ -14,9 +13,9 @@ namespace SmartTour.Domain
 
         public string Image { get; set; }
 
-        public int ToursCompleted { get; set; }
+        public int ResetTours { get; set; }
 
-        public int PlacesVisited { get; set; }
+        public int ResetPlaces { get; set; }
 
         public string Passw { get; set; }
 

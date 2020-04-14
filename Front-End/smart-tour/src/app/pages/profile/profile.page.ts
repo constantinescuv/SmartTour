@@ -13,6 +13,12 @@ export class ProfilePage {
     private toastController: ToastController,
     private popoverController: PopoverController) {}
 
+    image=JSON.parse(localStorage.getItem('user')).image;
+    firstName=JSON.parse(localStorage.getItem('user')).firstName;
+    lastName=JSON.parse(localStorage.getItem('user')).lastName;
+    placesVisited=JSON.parse(localStorage.getItem('user')).placesVisited;
+    toursCompleted=JSON.parse(localStorage.getItem('user')).toursCompleted;
+
   ngOnInit() {
     if(!localStorage.getItem('user')) {
       this.navController.navigateForward(['login'], { animated: false });

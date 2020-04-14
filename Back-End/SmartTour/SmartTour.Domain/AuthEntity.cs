@@ -12,7 +12,16 @@ namespace SmartTour.Domain
         public int UserId { get; set; }
 
         [Required]
-        public string Username { get; set; }
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        public string Image { get; set; }
+
+        public decimal ToursCompleted { get; set; }
+
+        public decimal PlacesVisited { get; set; }
 
         [Required]
         public string Passw { get; set; }

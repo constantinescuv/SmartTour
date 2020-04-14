@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit profile info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input autocomplete="off" type="text" name="firstName" [(ngModel)]="firstName"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input autocomplete="off" name="lastName" [(ngModel)]="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Image</ion-label>
+        <ion-input autocomplete="off" type="text" name="image" [(ngModel)]="image"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Reset Places Visited</ion-label>
+        <ion-toggle slot="end" name="resetPlaces" [(ngModel)]="resetPlaces"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Reset Tours Completed</ion-label>
+        <ion-toggle slot="end" name="resetTours" [(ngModel)]="resetTours"></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="block" share="round" color="primary" (click)="editInfo()">Save</ion-button>
+    <section class="full-width">
+      <ion-button expand="full" fill="clear" routerLink="/home/profile">Cancel</ion-button>
+    </section>
+  </form>
+</ion-content>

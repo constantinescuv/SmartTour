@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
-    path: 'change-profile',
-    loadChildren: () => import('./pages/change-profile/change-profile.module').then( m => m.ChangeProfilePageModule)
+    path: 'changeprofile',
+    loadChildren: () => import('./pages/changeprofile/changeprofile.module').then( m => m.ChangeprofilePageModule)
   }
   
 ];

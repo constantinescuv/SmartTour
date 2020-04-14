@@ -32,6 +32,9 @@ namespace SmartTour.Api.Controllers
                     user.Passw = password;
 
                 }
+                user.Image = "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg";
+                user.PlacesVisited = 0;
+                user.ToursCompleted = 0;
                 _auc.Add(user);
                 _auc.SaveChanges();
             }
@@ -61,6 +64,32 @@ namespace SmartTour.Api.Controllers
                 }
 
                 else return BadRequest();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost("edit")]
+        public IActionResult Edit([FromBody] EditEntity user)
+        {
+            try
+            {
+                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.Email == user.Email);
+
+                if (dbEntry != null)
+                {
+                    if (user.FirstName != string.Empty) { dbEntry.FirstName = user.FirstName; }
+                    if (user.LastName != string.Empty) { dbEntry.LastName = user.LastName; }
+                    if (user.Image != string.Empty) { dbEntry.Image = user.Image; }
+                    if (user.ResetTours != 0) { dbEntry.ToursCompleted = 0; }
+                    if (user.ResetPlaces != 0) { dbEntry.PlacesVisited = 0; }
+                    _auc.SaveChanges();
+                }
+                return Ok(dbEntry);
+                
             }
             catch
             {

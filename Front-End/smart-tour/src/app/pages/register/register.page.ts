@@ -10,7 +10,8 @@ import { NavController, ToastController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
 
   postData = {
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     passw: ''
     };
@@ -20,13 +21,13 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
     if(!!localStorage.getItem('user')) {
       this.navController.navigateForward(['home'], { animated: false });
-      this.loggedInToast(JSON.parse(localStorage.getItem('user')).username);
+      this.loggedInToast(JSON.parse(localStorage.getItem('user')).firstName);
     }
   }
 
-  async loggedInToast(username: string) {
+  async loggedInToast(firstName: string) {
     const toast = await this.toastController.create({
-      message: 'Logged in as ' + username,
+      message: 'Logged in as ' + firstName,
       color: 'primary',
       duration: 2000
     });
@@ -35,13 +36,16 @@ export class RegisterPage implements OnInit {
   }
     
   validateInputs() {
-    let username = this.postData.username.trim();
+    let firstName = this.postData.firstName.trim();
+    let lastName = this.postData.lastName.trim();
     let password = this.postData.passw.trim();
     let email = this.postData.email.trim();
 
     return (
-    username.length > 0 &&
-    username.length < 100 &&
+    firstName.length > 0 &&
+    firstName.length < 100 &&
+    lastName.length > 0 &&
+    lastName.length < 100 &&
     email.length > 0 &&
     email.length < 100 &&
     password.length > 0 &&

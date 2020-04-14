@@ -15,4 +15,8 @@ export class AuthService {
   login(data: any): Promise<Response> {
     return this.http.post<Response>('https://localhost:44305/auth/login', data, {observe: 'response' as "body"}).toPromise();
   }
+
+  edit(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/edit', data, {observe: 'response' as "body"}).toPromise();
+  }
 }
