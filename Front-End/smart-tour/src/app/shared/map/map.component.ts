@@ -22,6 +22,7 @@ export class MapComponent implements AfterViewInit {
       zoom: 12,
       center: POSITION || { lat: 22, lng: 22}
     });
+
     const marker = new google.maps.Marker({
       position: POSITION,
       map: map

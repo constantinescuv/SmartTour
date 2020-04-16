@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SmartTour.Business;
+using SmartTour.Business.Funct;
 using SmartTour.DataAccess;
 
 namespace SmartTour.Api
@@ -22,6 +24,8 @@ namespace SmartTour.Api
         {
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
             services.AddTransient<DatabaseContext>();
+            services.AddSingleton<ITourService, TourService>();
+            services.AddSingleton<IGetTour, GetTour>();
             services.AddControllers();
         }
 

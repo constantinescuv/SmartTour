@@ -5,10 +5,6 @@
       <ion-button (click)="closeModal()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
-      <ion-button (click)="automaticClose = !automaticClose">
-        <ion-icon slot="icon-only" name="close" *ngIf="automaticClose"></ion-icon>
-        <ion-icon slot="icon-only" name="resize" *ngIf="!automaticClose"></ion-icon>
-      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -42,4 +38,5 @@
       </ion-list>
     </div>
   </ion-list>
+  <ion-button expand="block" share="round" color="primary" (click)="configureTour()">Save</ion-button>
 </ion-content>

@@ -107,10 +107,17 @@ export class StartPage {
     });
     this.coordinates = fromPromise(POSITION).pipe(
       switchMap((data: any) => of(data.coords)),
-      tap(data => console.log(data))
+      tap(data => this.setCoord(data))
     );
+    
     return POSITION;
   }
-  
+
+  private setCoord(data)
+  {
+    localStorage.setItem('Latitude', data.latitude);
+    localStorage.setItem('Longitude', data.longitude);
+  }
+
 
 }

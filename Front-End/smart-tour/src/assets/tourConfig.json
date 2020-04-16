@@ -5,14 +5,17 @@
             "children": [
                 {
                     "name": "less than 2 km",
+                    "type": "DistanceRange",
                     "information": "A small tour, best paired with the shortest time range option"
                 },
                 {
                     "name": "2 to 5 km",
+                    "type": "DistanceRange",
                     "information": "A medium tour, best paired with the medium time range option"
                 },
                 {
                     "name": "5 to 10 km",
+                    "type": "DistanceRange",
                     "information": "A big tour, best paired with the longest time range option"
                 }
             ]
@@ -22,14 +25,17 @@
             "children": [
                 {
                     "name": "30 minutes to two hours",
+                    "type": "TimeRange",
                     "information": "A short tour"
                 },
                 {
                     "name": "two hours to four hours",
+                    "type": "TimeRange",
                     "information": "A medium tour"
                 },
                 {
                     "name": "more than four hours",
+                    "type": "TimeRange",
                     "information": "A long tour"
                 }
             ]
@@ -39,14 +45,17 @@
             "children": [
                 {
                     "name": "by personal car",
+                    "type": "Transport",
                     "information": "Having a personal vehicle might result in getting locations from farther away but also better rated"
                 },
                 {
                     "name": "by public transport",
+                    "type": "Transport",
                     "information": "More locations close to a public transport station will be put on the tour"
                 },
                 {
                     "name": "by bycicle",
+                    "type": "Transport",
                     "information": "A short distance will play a much more important role in selecting locations"
                 }
             ]

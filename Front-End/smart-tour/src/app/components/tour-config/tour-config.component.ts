@@ -14,9 +14,11 @@ export class TourConfigComponent implements OnInit {
 
   ngOnInit() {}
 
-  async buyItem(tourConfig) {
+  async selectItem(tourConfig) {
+    localStorage.setItem(tourConfig.type, tourConfig.name);
     let toast = await this.toastCtrl.create({
-      message: `${tourConfig.name} set`
+      message: `${tourConfig.name} set`,
+      duration: 2000
     });
     toast.present();
   }
