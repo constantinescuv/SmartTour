@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CheckpointComponent } from './checkpoint.component';
+import { TourPage } from './tour.page';
 
-describe('CheckpointComponent', () => {
-  let component: CheckpointComponent;
-  let fixture: ComponentFixture<CheckpointComponent>;
+describe('TourPage', () => {
+  let component: TourPage;
+  let fixture: ComponentFixture<TourPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckpointComponent ],
+      declarations: [ TourPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CheckpointComponent);
+    fixture = TestBed.createComponent(TourPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -12,10 +12,10 @@ namespace SmartTour.Domain
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public Dictionary<string, Dictionary<string, Dictionary<string, string>>> Photo { get; set; }
-        //public string Category { get; set; }
-        //public string Subtype { get; set; }
-        //public string Ranking { get; set; }
-        //public string Rating { get; set; }
-        //public string Website { get; set; }
+        public List<Dictionary<string,string>> Subtype { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Rating { get; set; }
+        public string Website { get; set; }
     }
 }

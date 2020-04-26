@@ -94,6 +94,8 @@ export class ModalPage implements OnInit {
         localStorage.setItem('tour', JSON.stringify(res.body));
   
         this.navController.navigateForward(['tour'], { animated: false });
+
+        this.closeModal();
       } catch {
   
         const toast = await this.toastController.create({

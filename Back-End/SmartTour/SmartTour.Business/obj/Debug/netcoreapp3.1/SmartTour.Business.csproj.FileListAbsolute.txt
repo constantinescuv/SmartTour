@@ -9,3 +9,15 @@ E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\Smart
 E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.dll
 E:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.pdb
 E:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csproj.CopyComplete
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.deps.json
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Business.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.Domain.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csprojAssemblyReference.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csproj.CoreCompileInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.AssemblyInfoInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.AssemblyInfo.cs
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csproj.CopyComplete
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.pdb

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "0Nhhq2GFK9ggdqMuoSwZDBAJEXxQsTrqFvuQUbYw0LgLCpMZr8aHRTKQ0dvwXpFFOU4GMGUcUO1O9mYZ1NK7Vg==",
+  "success": true,
+  "projectFilePath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vlad\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

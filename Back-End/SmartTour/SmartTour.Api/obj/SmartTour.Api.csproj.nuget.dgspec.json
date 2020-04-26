@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj": {}
+    "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj": {}
   },
   "projects": {
-    "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj": {
+    "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj",
+        "projectUniqueName": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj",
         "projectName": "SmartTour.Api",
-        "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj",
+        "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\SmartTour.Api.csproj",
         "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
-        "outputPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\obj\\",
+        "outputPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -30,14 +27,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj": {
-                "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj"
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj"
               },
-              "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj": {
-                "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj"
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj"
               },
-              "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
-                "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
               }
             }
           }
@@ -94,22 +91,19 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj": {
+    "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj",
+        "projectUniqueName": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj",
         "projectName": "SmartTour.Business",
-        "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj",
+        "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\SmartTour.Business.csproj",
         "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
-        "outputPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\obj\\",
+        "outputPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Business\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -124,8 +118,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
-                "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
               }
             }
           }
@@ -159,22 +153,19 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj": {
+    "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj",
+        "projectUniqueName": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj",
         "projectName": "SmartTour.DataAccess",
-        "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj",
+        "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj",
         "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
-        "outputPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\obj\\",
+        "outputPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -189,8 +180,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
-                "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
               }
             }
           }
@@ -240,22 +231,19 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
+    "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj",
+        "projectUniqueName": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj",
         "projectName": "SmartTour.Domain",
-        "projectPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj",
+        "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj",
         "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
-        "outputPath": "E:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\obj\\",
+        "outputPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -295,7 +283,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -4,16 +4,15 @@ import { TourConfigComponent } from './tour-config/tour-config.component';
 import { IonicModule } from '@ionic/angular';
 import { SlidesComponent } from './slides/slides.component';
 import { StartComponent } from './start/start.component';
-import { CheckpointComponent } from './checkpoint/checkpoint.component';
 
 
 
 @NgModule({
-  declarations: [TourConfigComponent, SlidesComponent, StartComponent, CheckpointComponent],
+  declarations: [TourConfigComponent, SlidesComponent, StartComponent],
   imports: [
     CommonModule,
     IonicModule
   ],
-  exports: [TourConfigComponent, SlidesComponent, StartComponent, CheckpointComponent]
+  exports: [TourConfigComponent, SlidesComponent, StartComponent]
 })
 export class SharedComponentsModule { }

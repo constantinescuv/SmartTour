@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'changeprofile',
     loadChildren: () => import('./pages/changeprofile/changeprofile.module').then( m => m.ChangeprofilePageModule)
+  },
+  {
+    path: 'tour',
+    loadChildren: () => import('./pages/tour/tour.module').then( m => m.TourPageModule)
   }
   
 ];

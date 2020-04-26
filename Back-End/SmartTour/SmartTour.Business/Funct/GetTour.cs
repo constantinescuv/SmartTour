@@ -17,7 +17,7 @@ namespace SmartTour.Business.Funct
             {
                 //Function needs to be async for the request to the external api to work!!
 
-                //client.DefaultRequestHeaders.Add("x-rapidapi-key", "9310e38a5cmsh68ceffe968b43f3p18e4a2jsn8da5af95c8d1");
+                //client.DefaultRequestHeaders.Add("x-rapidapi-key", "");
                 //client.DefaultRequestHeaders.Add("x-rapidapi-host", "tripadvisor1.p.rapidapi.com");
 
                 //var url = new Uri("https://tripadvisor1.p.rapidapi.com/attractions/list-by-latlng?lunit=km&currency=USD&limit=30&distance=5&lang=en_US&longitude=" + tourDetails.Longitude + "&latitude=" + tourDetails.Latitude);
@@ -42,7 +42,8 @@ namespace SmartTour.Business.Funct
                 TourModel Tour = new TourModel(obj_des["data"]);
                 //var image_url = theTour[0].Photo["images"]["original"]["url"]; @@@@@@@@for image url
 
-                return Tour;
+                TourModel SortedTour = SortTour.Sort(tourDetails, Tour);
+                return SortedTour;
             }
 
         }

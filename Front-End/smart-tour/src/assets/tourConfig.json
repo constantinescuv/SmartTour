@@ -4,17 +4,17 @@
             "name": "Distance range(in km)",
             "children": [
                 {
-                    "name": "less than 2 km",
+                    "name": "less than 5 km",
                     "type": "DistanceRange",
                     "information": "A small tour, best paired with the shortest time range option"
                 },
                 {
-                    "name": "2 to 5 km",
+                    "name": "less than 10 km",
                     "type": "DistanceRange",
                     "information": "A medium tour, best paired with the medium time range option"
                 },
                 {
-                    "name": "5 to 10 km",
+                    "name": "less than 20 km",
                     "type": "DistanceRange",
                     "information": "A big tour, best paired with the longest time range option"
                 }
@@ -24,17 +24,17 @@
             "name": "Time range",
             "children": [
                 {
-                    "name": "30 minutes to two hours",
+                    "name": "less than 2 hours",
                     "type": "TimeRange",
                     "information": "A short tour"
                 },
                 {
-                    "name": "two hours to four hours",
+                    "name": "less than 5 hours",
                     "type": "TimeRange",
                     "information": "A medium tour"
                 },
                 {
-                    "name": "more than four hours",
+                    "name": "less than 8 hours",
                     "type": "TimeRange",
                     "information": "A long tour"
                 }
