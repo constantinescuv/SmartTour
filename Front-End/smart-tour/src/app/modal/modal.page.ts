@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController, ToastController, NavController } from '@ionic/angular';
+import { ModalController, ToastController, NavController, ActionSheetController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { TourService } from '../services/tour.service';
 
@@ -19,7 +19,9 @@ export class ModalPage implements OnInit {
     TimeRange: '',
     DistanceRange: '',
     Latitude: '',
-    Longitude: ''
+    Longitude: '',
+    EatingBreak: false,
+    savedPlaces: ''
   };
 
   constructor(private modalController: ModalController, 
@@ -74,37 +76,41 @@ export class ModalPage implements OnInit {
     }
     else 
     {
+      this.postData.savedPlaces = localStorage.getItem('saveList');
       this.postData.DistanceRange = localStorage.getItem('DistanceRange');
       this.postData.TimeRange = localStorage.getItem('TimeRange');
       this.postData.Transport = localStorage.getItem('Transport');
       this.postData.Latitude = localStorage.getItem('Latitude');
       this.postData.Longitude = localStorage.getItem('Longitude');
-
-      try { 
-        const res = await this.tourService.generateTour(this.postData);
+      
+      if (parseInt(this.postData.TimeRange.match(/(\d+)/)[0]) * 60 > 240) {
+        this.postData.EatingBreak = localStorage.getItem('EatingBreak') == 'true';
+        try { 
+          const res = await this.tourService.generateTour(this.postData);
+    
+          const toast = await this.toastController.create({
+            message: 'Tour created succesfully!',
+            color: 'success',
+            duration: 2000
+          });
+    
+          toast.present();
+    
+          localStorage.setItem('tour', JSON.stringify(res.body));
+    
+          this.navController.navigateForward(['tour'], { animated: false });
   
-        const toast = await this.toastController.create({
-          message: 'Tour created succesfully!',
-          color: 'success',
-          duration: 2000
-        });
-  
-        toast.present();
-  
-        localStorage.setItem('tour', JSON.stringify(res.body));
-  
-        this.navController.navigateForward(['tour'], { animated: false });
-
-        this.closeModal();
-      } catch {
-  
-        const toast = await this.toastController.create({
-          message: 'Error! Something went wrong with the tour generation..',
-          color: 'danger',
-          duration: 2000
-        });
-  
-        toast.present();
+          this.closeModal();
+        } catch {
+    
+          const toast = await this.toastController.create({
+            message: 'Error! Something went wrong with the tour generation..',
+            color: 'danger',
+            duration: 2000
+          });
+    
+          toast.present();
+        }
       }
     }
     

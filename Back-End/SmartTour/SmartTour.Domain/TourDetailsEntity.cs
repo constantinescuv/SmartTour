@@ -22,5 +22,10 @@ namespace SmartTour.Domain
         [Required]
         public string Longitude { get; set; }
 
+        [Required]
+        public bool EatingBreak { get; set; }
+
+        public string savedPlaces { get; set; }
+
     }
 }

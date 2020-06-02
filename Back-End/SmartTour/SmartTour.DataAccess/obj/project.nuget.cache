@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AG1/4T3PMxjyiMWpt3wlfnaM2NzIFX7xhyQDtY1CJXEGhbn1BNfYLNQIqhe9P/zSwJ53urfHCLh/nVD+G7tZtA==",
+  "dgSpecHash": "IVfo8wxi9PeeNkpLdK02MwJ2n/HI83b0rso+0CVdEsIb4ZMjOcwJ+o4VZ5matQkYY8gTaxP/A/KbniaXQliL6A==",
   "success": true,
   "projectFilePath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\Vlad\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Vlad\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

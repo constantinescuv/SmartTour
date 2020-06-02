@@ -16,5 +16,7 @@ namespace SmartTour.DataAccess
 
         public DbSet<AuthEntity> Users { get; set; }
 
+        public DbSet<PostEntity> Posts { get; set; }
+
     }
 }

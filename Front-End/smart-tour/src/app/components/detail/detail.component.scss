@@ -1,0 +1,27 @@
+ion-slides {
+    height: 100%;
+  }
+
+.tour ion-label {
+    line-height: 1!important;
+    font-size: 15px;
+    margin: 6px 0px 6px 0px!important;
+    min-height: 34px;
+  }
+  
+.tour {
+    margin-top: -10px!important;
+  }
+  
+.tour-img {
+    border-radius: 10px;
+    width: 95%;
+    margin-left: 2.5%;
+  }
+
+ion-card{
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+    margin: 0 !important;
+}

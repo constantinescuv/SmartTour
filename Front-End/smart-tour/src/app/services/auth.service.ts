@@ -19,4 +19,17 @@ export class AuthService {
   edit(data: any): Promise<Response> {
     return this.http.post<Response>('https://localhost:44305/auth/edit', data, {observe: 'response' as "body"}).toPromise();
   }
+
+  incrementTours(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/incrementTours', data).toPromise();
+  }
+
+  incrementPlaces(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/incrementPlaces', data).toPromise();
+  }
+
+  refreshProfile(data: any): Promise<Response> {
+    return this.http.post<Response>('https://localhost:44305/auth/refreshProfile', data, {observe: 'response' as "body"}).toPromise();
+  }
+
 }

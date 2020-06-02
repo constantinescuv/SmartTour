@@ -7,20 +7,65 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div *ngIf="(coordinates|async) as coords"></div>
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Explore</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid>
+  <!-- <ion-grid>
     <ion-row>
-      <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let image of [1,2,3,4,5,6,7,8,9]">
-        <div class="img-wrapper" [style.background-image]="'url(assets/img/explore_images/ionic-image-gallery-' + image + '.jpg)'">
-        </div>
+      <ion-col sizeLg="8" sizeMd="auto" sizeXs="6" *ngFor="let place of exploreList; let i = index;">
+        <img class="img-wrapper" src={{place.photo.images.medium.url}}>
+
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+
+  <div *ngIf="!exploreList">
+    <br><br>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </div>
+
+  <div *ngIf="exploreList">
+    <ion-card *ngFor="let place of exploreList; let i = index;">
+      <img class="img-wrapper" src={{place.photo.images.medium.url}}>
+      <div>
+        <ion-fab horizontal="end" vertical="top" slot="fixed">
+          <ion-fab-button color="light" (click)="savePlace(i)">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </div>
+      <ion-item lines="none">
+        <ion-card-header>
+          <ion-card-subtitle *ngIf="place.rating">{{place.rating}} <ion-icon *ngIf="place.rating" name="star"></ion-icon></ion-card-subtitle>
+          <ion-card-title>{{place.name}}</ion-card-title>
+          <ion-card-subtitle>{{place.address}}</ion-card-subtitle>
+        </ion-card-header>
+        
+      </ion-item>
+      <ion-item lines="none" class="tour">
+        
+        <ion-card-content>
+          {{place.description}}
+        </ion-card-content>
+        
+      </ion-item>
+      
+      <!-- <img class="tour-img" src={{item.images[0]}} (click)="expand(item)"> -->
+    </ion-card>
+
+    <div *ngIf="exploreList.length == 0">
+      <ion-card>
+          <ion-item lines="none" class="tour">
+            <ion-label text-wrap><br><b>No attractions found in your area, a tour generation might not be possible.</b><br></ion-label>
+          </ion-item>
+      </ion-card>
+    </div>
+  </div>
 
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

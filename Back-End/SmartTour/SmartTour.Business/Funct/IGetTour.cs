@@ -8,7 +8,7 @@ namespace SmartTour.Business.Funct
 {
     public interface IGetTour
     {
-        Task<TourModel> ReturnTourBasedOnCriteria(TourDetailsEntity tourDetails);
+        (TourModel, List<List<PlaceEntity>>) ReturnTourBasedOnCriteria(TourDetailsEntity tourDetails);
 
     }
 }

@@ -247,8 +247,6 @@ F:\SmartTour\Back-End\SmartTour\SmartTour.Api\bin\Debug\netcoreapp3.1\SmartTour.
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.pdb
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\bin\Debug\netcoreapp3.1\SmartTour.Domain.pdb
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.csprojAssemblyReference.cache
-F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.csproj.CoreCompileInputs.cache
-F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.MvcApplicationPartsAssemblyInfo.cache
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.AssemblyInfoInputs.cache
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.AssemblyInfo.cs
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.RazorTargetAssemblyInfo.cache
@@ -258,3 +256,6 @@ F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\staticweba
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.dll
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.pdb
 F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.genruntimeconfig.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Api\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.csproj.CoreCompileInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Api\obj\Debug\netcoreapp3.1\SmartTour.Api.MvcApplicationPartsAssemblyInfo.cache

@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
     
   ngOnInit() {
     if(!!localStorage.getItem('user')) {
-      this.navController.navigateForward(['home'], { animated: false });
+      this.navController.navigateForward(['home/tutorial'], { animated: false });
       this.loggedInToast(JSON.parse(localStorage.getItem('user')).firstName);
     }
   }
@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
 
       localStorage.setItem('user', JSON.stringify(res.body));
 
-      this.navController.navigateForward(['home'], { animated: false });
+      this.navController.navigateForward(['home/tutorial'], { animated: false });
     } catch {
 
       const toast = await this.toastController.create({

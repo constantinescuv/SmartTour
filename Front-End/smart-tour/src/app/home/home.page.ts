@@ -8,6 +8,11 @@ import { NavController, ToastController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
+  slideOpts = {
+    initialSlide: 0,
+    speed: 400
+  };
+  
   constructor(private navController: NavController, private toastController: ToastController) {}
 
   ngOnInit() {

@@ -24,6 +24,9 @@
         }
       },
       "SmartTour.Domain/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
         "runtime": {
           "SmartTour.Domain.dll": {}
         }

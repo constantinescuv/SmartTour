@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tour in <br>{{ tour.place }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of tour.checkpointNames; let i = index;">
+      <ion-card>
+        <ion-item lines="none">
+          <ion-card-header>
+            <ion-card-title>{{ tour.checkpointNames[i] }}</ion-card-title>
+            <ion-card-subtitle>{{ tour.place }}</ion-card-subtitle>
+          </ion-card-header>
+        </ion-item>
+        <ion-item lines="none" class="tour">
+          <ion-card-content> 
+            On {{ date }} you visited {{ tour.checkpointNames[i] }} in your {{ tour.duration }} hour Tour around {{ tour.place }}.
+          </ion-card-content>
+        </ion-item>
+        <img class="tour-img" src='{{ tour.images[i] }}'>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

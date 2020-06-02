@@ -34,6 +34,9 @@ export class StartPage {
       this.notLoggedInToast();
     }
     else {
+      if(localStorage.getItem('tour') != null) {
+        this.navController.navigateForward(['tour'], { animated: false });
+      }
       //start the loader
       this.displayLoader()
       .then((loader: any) => {

@@ -1,9 +1,6 @@
 ﻿using SmartTour.Business.Funct;
 using SmartTour.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartTour.Business
 {
@@ -16,7 +13,7 @@ namespace SmartTour.Business
             _getTour = getTour;
         }
 
-        public Task<TourModel> GetTour(TourDetailsEntity tourDetails) 
+        public (TourModel, List<List<PlaceEntity>>) GetTour(TourDetailsEntity tourDetails) 
         {
             return _getTour.ReturnTourBasedOnCriteria(tourDetails);
         }

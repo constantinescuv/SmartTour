@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'tour',
     loadChildren: () => import('./pages/tour/tour.module').then( m => m.TourPageModule)
+  },
+  {
+    path: 'tutorial',
+    loadChildren: () => import('./pages/tutorial/tutorial.module').then( m => m.TutorialPageModule)
   }
   
 ];

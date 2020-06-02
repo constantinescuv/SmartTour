@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kcpJdDAuT4Zba6uHss4GK1xkIZUKqf8jOR7pT3zpz3VhDkCrQ3cyjyCol8cvsYQh+3fICd+oPjXl87M4qA5MrQ==",
+  "dgSpecHash": "U1hDS5jts2yb6ByCgtw/83icG3YrSn2wWO4zazoRBzWjeDcjQIyxqIzYfMrZUYQRw6zNghMDorivXakc8iXi4w==",
   "success": true,
   "projectFilePath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Vlad\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -35,7 +35,7 @@ namespace SmartTour.Api.Controllers
                 user.Image = "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg";
                 user.PlacesVisited = 0;
                 user.ToursCompleted = 0;
-                _auc.Add(user);
+                _auc.Users.Add(user);
                 _auc.SaveChanges();
             }
             catch
@@ -90,6 +90,67 @@ namespace SmartTour.Api.Controllers
                 }
                 return Ok(dbEntry);
                 
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost("incrementTours")]
+        public IActionResult IncrementTours([FromBody] AuthEntity user)
+        {
+            try
+            {
+                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
+
+                if (dbEntry != null)
+                {
+                    dbEntry.ToursCompleted += 1;
+                    _auc.SaveChanges();
+                }
+                return Ok();
+
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost("incrementPlaces")]
+        public IActionResult IncrementPlaces([FromBody] AuthEntity user)
+        {
+            try
+            {
+                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
+
+                if (dbEntry != null)
+                {
+                    dbEntry.PlacesVisited += 1;
+                    _auc.SaveChanges();
+                }
+                return Ok();
+
+            }
+            catch
+            {
+                return BadRequest();
+            }
+
+        }
+
+        [HttpPost("refreshProfile")]
+        public IActionResult RefreshProfile([FromBody] AuthEntity user)
+        {
+            try
+            {
+                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
+
+                return Ok(dbEntry);
+
             }
             catch
             {

@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Tour Configuration</ion-title>
+    <ion-title>Tour</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="presentAlert()">
+      <ion-button (click)="cancelAlert()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,14 +10,21 @@
 </ion-header>
 
 <ion-content>
-  
   <ion-list *ngFor="let item of tour; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
     <ion-item tappable (click)="toggleSection(i)" [ngClass]="{'section-active': item.open, 'section': !item.open}">
-      <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon>
-      <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon>
+      
+      <ion-icon slot="start" src='{{ icons[item.subtype[0].name] }}' *ngIf="icons"></ion-icon>
+      <!-- <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon> -->
+      <!-- <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon> -->
       <ion-label>
         {{ item.name }}
       </ion-label>
+      <div *ngIf="completed[i]">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+      <div *ngIf="skipped[i]">
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
     </ion-item>
   
 
@@ -28,42 +35,75 @@
             <!-- <ion-col>
               <ion-row no-padding> -->
                 <ion-col size="12">
-                  <h3>{{ item.name }}</h3>
+                  <h1>{{ item.name }}</h1> 
+                </ion-col>
+                <ion-col size="12">
+                  <div *ngIf="item.cuisine; else elseBlock">
+                    <div>
+                      <ion-chip *ngFor="let cuisine of item.cuisine; let j = index;" outline color= '{{ colors[j % 3] }}'>
+                        <ion-icon src='{{ icons[item.cuisine[j].name] }}' *ngIf="icons && icons[item.cuisine[j].name]"></ion-icon>
+                        <ion-label> {{ item.cuisine[j].name }} </ion-label>
+                      </ion-chip>
+                    </div>
+                  </div>
+                  <ng-template #elseBlock>
+                    <div>
+                      <ion-chip *ngFor="let subtype of item.subtype; let j = index;" outline color= '{{ colors[j % 3] }}'>
+                        <ion-icon src='{{ icons[item.subtype[j].name] }}' *ngIf="icons"></ion-icon>
+                        <ion-label> {{ item.subtype[j].name }} </ion-label>
+                      </ion-chip>
+                    </div>
+                  </ng-template>
+
                 </ion-col>
                 <ion-col size="12">
                   <p text-lowercase color="medium">{{ item.address }}</p>
                 </ion-col>
                 <ion-col size="12">
-                  <img src={{item.photo.images.medium.url}}>
+                  <div *ngIf="item.description; else elseBlock1">
+                    <div>
+                      <img class="tour-img" src={{item.photo.images.medium.url}}>
+                      <ion-fab horizontal="end" vertical="top" slot="fixed">
+                        <ion-fab-button (click)="expand(i)">
+                          <ion-icon name="add"></ion-icon>
+                        </ion-fab-button>
+                      </ion-fab>
+                    </div>
+                  </div>
+                  <ng-template #elseBlock1>
+                    <div>
+                      <img class="tour-img" src={{item.photo.images.medium.url}}>
+                    </div>
+                  </ng-template>
                 </ion-col>
                 <ion-col size="12">
-                  <ion-button fill="outline" (click)="selectItem(checkpoint)">Done</ion-button>
+                  <ion-button shape="round" size="large" color="success" fill="solid" (click)="doneAlert(i)">Done</ion-button>
+                  <div class="divider"></div>
+                  <ion-button shape="round" size="large" color="danger" fill="solid" (click)="skipCheckpoint(item)">Skip</ion-button>
+                  <!-- <ion-button expand="block" share="round" color="primary" (click)="configureTour()">Save</ion-button> -->
                 </ion-col>
               </ion-row>
             <!-- </ion-col>
           </ion-row> -->
         </ion-item>
       </ion-list>
-      
-      <!-- <ion-list *ngFor="let child of tour; let j =index;" lines="none" class="child-list">
-        <ion-item tappable (click)="toggleItem(i, j)" *ngIf="child" [ngClass]="{'child-active': child.open, 'child': !child.open}">
-          <ion-icon slot="start" name="add" *ngIf="!child.open"></ion-icon>
-          <ion-icon slot="start" name="close" *ngIf="child.open"></ion-icon>
-          <ion-label>
-            {{ child.name }}
-          </ion-label>
-        </ion-item>
 
-        <app-checkpoint [checkpoint]="child" *ngIf="!child"></app-checkpoint> -->
-      
-        <!-- <ion-list *ngIf="item && item.open" class="product-list" lines="none">
-          <ion-label>
-            {{ item.photo.images.medium.url }}
-          </ion-label>
-          <app-checkpoint [checkpoint]="product" *ngFor="let product of item"></app-checkpoint>
-        </ion-list> -->
-        
-      <!-- </ion-list> -->
+      <ion-fab horizontal="end" vertical="top" slot="fixed" *ngIf="item.phone || item.email || item.website">
+        <ion-fab-button>
+          <ion-icon name="arrow-down-circle-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list>
+          <ion-fab-button color="light" *ngIf="item.email" (click)="email()">
+            <ion-icon name="mail"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="light" *ngIf="item.phone" (click)="call(item.phone)">
+            <ion-icon name="call"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="light" *ngIf="item.website" href={{item.website}}>
+            <ion-icon src='assets/icon/internet.svg'></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
     </div>
 
     <!-- <div *ngIf="item.children && item.open">
@@ -85,7 +125,8 @@
       </ion-list>
     </div> -->
   </ion-list>
-  <ion-button expand="block" share="round" color="primary" (click)="configureTour()">Save</ion-button>
+  
+  <ion-button expand="block" share="round" color="primary" (click)="finishAlert()">Finish Tour</ion-button>
 </ion-content>
 
 

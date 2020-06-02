@@ -26,6 +26,8 @@ namespace SmartTour.Api
             services.AddTransient<DatabaseContext>();
             services.AddSingleton<ITourService, TourService>();
             services.AddSingleton<IGetTour, GetTour>();
+            services.AddSingleton<IExploreService, ExploreService>();
+            services.AddSingleton<IGetExploreList, GetExploreList>();
             services.AddControllers();
         }
 

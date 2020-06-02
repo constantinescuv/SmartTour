@@ -9,7 +9,7 @@
     <div class="space-between">
       <div class="followings">
         <ion-badge color="primary" mode="ios">{{toursCompleted}}</ion-badge>
-        <p>Completed Tours</p>
+        <p>&nbsp;&nbsp;Tours Done</p>
       </div>
       <div class="followings">
         <ion-badge color="primary" mode="ios">{{placesVisited}}</ion-badge>
@@ -28,19 +28,36 @@
     </div>
   </div>
 
-  <ion-card>
+  <div *ngIf="loading">
+    <br><br>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </div>
+
+  <ion-card *ngFor="let item of feed; let i = index;">
     <ion-item lines="none">
       <ion-avatar slot="start">
         <img src={{image}} />
       </ion-avatar>
       <ion-label>
-        <h2><b>{{firstName}} {{lastName}}</b></h2>
-        <p>16 Mar</p>
+        <h2><b>{{item.place}}</b></h2>
+        <p>{{item.date}}</p>
       </ion-label>
     </ion-item>
     <ion-item lines="none" class="tour">
-      <ion-label text-wrap>tour info</ion-label>
+      <ion-card-content> 
+        {{desc[i]}}
+      </ion-card-content>
     </ion-item>
-    <img class="tour-img" src="./assets/img/explore_images/ionic-image-gallery-1.jpg">
+    <img class="tour-img" src={{item.images[0]}} (click)="expand(item)">
+
   </ion-card>
+
+  <div *ngIf="feed.length == 0">
+    <ion-card>
+        <ion-item lines="none" class="tour">
+          <ion-label text-wrap><br><b>You have not completed any tours! To start a new one tap the 'Start Tour' tab and start configuring it.</b><br></ion-label>
+        </ion-item>
+    </ion-card>
+  </div>
+
 </ion-content>

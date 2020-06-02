@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ title }} </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card>
+      <img src="{{image}}" />
+      <ion-card-header>
+        <ion-card-subtitle>Rating: {{rating}}</ion-card-subtitle>
+        <ion-card-title>{{title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{description}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -14,6 +14,9 @@
       "SmartTour.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
         "compile": {
           "bin/placeholder/SmartTour.Domain.dll": {}
         },

@@ -239,8 +239,12 @@ ion-popover{
   }
   .popover-wrapper{
     .popover-content{
-      width:60vw;
-      max-width:500px;
+      width:80vw;
+      max-width:600px;
     }
   }
 }
+
+// .backdrop-no-scroll ion-content {
+//   --overflow: hidden;
+// }

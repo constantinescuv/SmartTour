@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit {
     
   ngOnInit() {
     if(!!localStorage.getItem('user')) {
-      this.navController.navigateForward(['home'], { animated: false });
+      this.navController.navigateForward(['home/tutorial'], { animated: false });
       this.loggedInToast(JSON.parse(localStorage.getItem('user')).firstName);
     }
   }
