@@ -14,18 +14,31 @@ import { DetailComponent } from './components/detail/detail.component';
 import { DescriptionComponent } from './components/description/description.component';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule, FirestoreSettingsToken } from 'angularfire2/firestore';
 
+import { environment } from 'src/environments/environment';
+import { PromotedService } from './services/promoted.service';
 
 @NgModule({
   declarations: [AppComponent, PopoverComponent, DetailComponent, DescriptionComponent],
   entryComponents: [PopoverComponent, DetailComponent, DescriptionComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ModalPageModule],
+  imports: [BrowserModule, IonicModule.forRoot({
+    rippleEffect: false,
+    mode: 'ios'
+  }), AppRoutingModule, ModalPageModule, 
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CallNumber,
-    EmailComposer
+    PromotedService,
+    EmailComposer,
+    Geolocation, 
+    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

@@ -2524,6 +2524,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
+          "SmartTour.DataAccess": "1.0.0",
           "SmartTour.Domain": "1.0.0"
         },
         "compile": {

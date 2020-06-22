@@ -70,8 +70,6 @@ export class ProfilePage {
         images.pop();
         this.feed[i]["images"] = images;
       }
-      console.log(this.feed.length);
-      
     }
   }
 

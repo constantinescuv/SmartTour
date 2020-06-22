@@ -2130,6 +2130,7 @@
       "SmartTour.Business/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
+          "SmartTour.DataAccess": "1.0.0",
           "SmartTour.Domain": "1.0.0"
         },
         "runtime": {

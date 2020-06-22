@@ -1,0 +1,15 @@
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.DataAccess.deps.json
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.DataAccess.runtimeconfig.json
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.DataAccess.runtimeconfig.dev.json
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.DataAccess.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.DataAccess.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.Domain.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\bin\Release\netcoreapp3.1\SmartTour.Domain.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.csprojAssemblyReference.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.csproj.CoreCompileInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.AssemblyInfoInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.AssemblyInfo.cs
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.csproj.CopyComplete
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.DataAccess\obj\Release\netcoreapp3.1\SmartTour.DataAccess.genruntimeconfig.cache

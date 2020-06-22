@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,14 @@ export class TourService {
   constructor(private http: HttpClient) { }
 
   generateTour(data: any): Promise<Response> {
-    return this.http.post<Response>('https://localhost:44305/tour/getTour', data, {observe: 'response' as "body"}).toPromise();
+    let params = new HttpParams().set("Latitude", data['Latitude'])
+                                 .set("Longitude", data['Longitude'])
+                                 .set("TimeRange", data['TimeRange'])
+                                 .set("EatingBreak", data['EatingBreak'])
+                                 .set("DistanceRange", data['DistanceRange'])
+                                 .set("savedPlaces", data['savedPlaces'])
+                                 .set("Transport", data['Transport']);
+    
+    return this.http.get<Response>('https://192.168.1.106:45461/tour/getTour', {observe: 'response' as "body", params}).toPromise();
   }
 }

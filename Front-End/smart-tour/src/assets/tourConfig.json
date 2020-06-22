@@ -26,17 +26,17 @@
                 {
                     "name": "less than 2 hours",
                     "type": "TimeRange",
-                    "information": "A short tour"
+                    "information": "A very short tour, usually has two or three locations in it, we recommend using the 'Explore' page to find single locations"
                 },
                 {
                     "name": "less than 5 hours",
                     "type": "TimeRange",
-                    "information": "A medium tour"
+                    "information": "A medium, recommended option. Eating break can be added"
                 },
                 {
                     "name": "less than 8 hours",
                     "type": "TimeRange",
-                    "information": "A long tour"
+                    "information": "A long tour, might not work in very small cities or towns"
                 }
             ]
         },
@@ -49,14 +49,29 @@
                     "information": "Having a personal vehicle might result in getting locations from farther away but also better rated"
                 },
                 {
-                    "name": "by public transport",
-                    "type": "Transport",
-                    "information": "More locations close to a public transport station will be put on the tour"
-                },
-                {
                     "name": "by bycicle",
                     "type": "Transport",
-                    "information": "A short distance will play a much more important role in selecting locations"
+                    "information": "Locations closer to you location are preffered"
+                },
+                {
+                    "name": "by foot",
+                    "type": "Transport",
+                    "information": "A short distance will play a much more important role in selecting locations but you still might encounter big distances in the case of must-see locations"
+                }
+            ]
+        },
+        {
+            "name": "Use saved places",
+            "children": [
+                {
+                    "name": "keep saved places",
+                    "type": "Saved",
+                    "information": "Have the places you saved from the explore tab (from around your current location) appear in the tour"
+                },
+                {
+                    "name": "remove saved places",
+                    "type": "Saved",
+                    "information": "Remove the places you saved from the explore tab letting the algorithm generate your tour from scratch"
                 }
             ]
         }

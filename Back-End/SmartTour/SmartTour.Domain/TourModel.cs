@@ -34,16 +34,6 @@ namespace SmartTour.Domain
 
         public TourModel GetNRandomPlaces(int maxTime, int[] timeList, WeatherEntity weather, SubtypeDataEntity subtypeData, bool addRestaurant, string savedPlaces)
         {
-            double[] ratings = new double[Tour.Count()];
-
-            for (int i = 0; i < Tour.Count(); i++)
-            {
-                if (Tour.ElementAt(i).Rating != null)
-                    ratings[i] = double.Parse(Tour.ElementAt(i).Rating, System.Globalization.CultureInfo.InvariantCulture);
-                else
-                    ratings[i] = 3;
-            }
-
             List<PlaceEntity> newTourList = new List<PlaceEntity>();
 
             bool addedRestaurant = false;
@@ -65,23 +55,27 @@ namespace SmartTour.Domain
                         Tour = Tour.Where(u => u.Name != place.Name).ToList();
                     }
                 }
-                bool found = false;
-                RestaurantEntity restaurant = new RestaurantEntity();
-                foreach (string name in places)
+                if (addedRestaurant)
                 {
-                    restaurant = Restaurants.Where(i => i.Name == name).FirstOrDefault();
-                    if (restaurant != null)
+                    bool found = false;
+                    RestaurantEntity restaurant = new RestaurantEntity();
+                    foreach (string name in places)
                     {
-                        found = true;
-                        break;
+                        restaurant = Restaurants.Where(i => i.Name == name).FirstOrDefault();
+                        if (restaurant != null)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        newTourList.Add(restaurant);
+                        Restaurants = Restaurants.Where(u => u.Name != restaurant.Name).ToList();
+                        addedRestaurant = true;
                     }
                 }
-                if (found)
-                {
-                    newTourList.Add(restaurant);
-                    Restaurants = Restaurants.Where(u => u.Name != restaurant.Name).ToList();
-                    addedRestaurant = true;
-                }
+                
             }
 
             if (!addedRestaurant)
@@ -100,6 +94,16 @@ namespace SmartTour.Domain
 
                     Restaurants = Restaurants.Where(u => u.Name != Restaurants.ElementAt(restaurant_index).Name).ToList();
                 }
+            }
+
+            double[] ratings = new double[Tour.Count()];
+
+            for (int i = 0; i < Tour.Count(); i++)
+            {
+                if (Tour.ElementAt(i).Rating != null)
+                    ratings[i] = double.Parse(Tour.ElementAt(i).Rating, System.Globalization.CultureInfo.InvariantCulture);
+                else
+                    ratings[i] = 3;
             }
 
             List<int> index_list = GetRandomIndexList(ratings, timeList, maxTime, weather, subtypeData);
@@ -201,7 +205,7 @@ namespace SmartTour.Domain
             else if (humidity <= 70)
                 ratings = AdjustProbability(ratings, outdoorIndexList.ToArray(), 0.7);
             else
-                ratings = AdjustProbability(ratings, outdoorIndexList.ToArray(), 0);
+                ratings = AdjustProbability(ratings, outdoorIndexList.ToArray(), 0.3);
 
             while (timeCounter < maxTime)
             {
@@ -250,8 +254,16 @@ namespace SmartTour.Domain
                 PlaceEntity el = Tour.ElementAt(i);
                 if (el is AttractionEntity)
                 {
-                    if (subtypeData.is_outdoor[((AttractionEntity)el).Subtype[0]["name"]])
+                    if (subtypeData.is_outdoor.ContainsKey(((AttractionEntity)el).Subtype[0]["name"]))
+                    {
+                        if (subtypeData.is_outdoor[((AttractionEntity)el).Subtype[0]["name"]])
+                            indexList.Add(i);
+                    }
+                    else
+                    {
                         indexList.Add(i);
+                    }
+                    
                 }
             }
             return indexList;
@@ -267,10 +279,13 @@ namespace SmartTour.Domain
                 PlaceEntity el = Tour.ElementAt(i);
                 if (el is AttractionEntity)
                 {
-                    if (subtypeData.season[((AttractionEntity)el).Subtype[0]["name"]] == "hot")
-                        HotIndexList.Add(i);
-                    else if (subtypeData.season[((AttractionEntity)el).Subtype[0]["name"]] == "cold")
-                        ColdIndexList.Add(i);
+                    if (subtypeData.season.ContainsKey(((AttractionEntity)el).Subtype[0]["name"]))
+                    {
+                        if (subtypeData.season[((AttractionEntity)el).Subtype[0]["name"]] == "hot")
+                            HotIndexList.Add(i);
+                        else if (subtypeData.season[((AttractionEntity)el).Subtype[0]["name"]] == "cold")
+                            ColdIndexList.Add(i);
+                    }
                 }  
             }
             return (HotIndexList, ColdIndexList);

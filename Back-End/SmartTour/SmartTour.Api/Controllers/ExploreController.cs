@@ -16,11 +16,14 @@ namespace SmartTour.Api.Controllers
             _exploreService = exploreService;
         }
 
-        [HttpPost("getExploreList")]
-        public IActionResult GetExploreList([FromBody] CoordinateEntity coordinates)
+        [HttpGet("getExploreList")]
+        public IActionResult GetExploreList(string Latitude, string Longitude)
         {
             try
             {
+                CoordinateEntity coordinates = new CoordinateEntity();
+                coordinates.Latitude = Latitude;
+                coordinates.Longitude = Longitude;
                 (List<AttractionEntity>, List<RestaurantEntity>) res = _exploreService.GetExploreList(coordinates);
 
                 return Ok(new Dictionary<string, dynamic> { { "attractions", res.Item1 },

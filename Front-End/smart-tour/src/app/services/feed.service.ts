@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,13 @@ export class FeedService {
   constructor(private http: HttpClient) { }
 
   addPost(data: any): Promise<Response> {
-    return this.http.post<Response>('https://localhost:44305/feed/addPost', data).toPromise();
+    return this.http.post<Response>('https://192.168.1.106:45461/feed/addPost', data).toPromise();
   }
 
   getPosts(data: any): Promise<Response> {
-    return this.http.post<Response>('https://localhost:44305/feed/getPosts', data, {observe: 'response' as "body"}).toPromise();
+    let params = new HttpParams().set("uid", data['userId']);
+    return this.http.get<Response>('https://192.168.1.106:45461/feed/getPosts', {observe: 'response' as "body", params}).toPromise();
+
   }
 
 }

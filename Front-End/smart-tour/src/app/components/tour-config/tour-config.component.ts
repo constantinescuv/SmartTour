@@ -16,11 +16,18 @@ export class TourConfigComponent implements OnInit {
 
   async selectItem(tourConfig) {
     localStorage.setItem(tourConfig.type, tourConfig.name);
-    if (tourConfig.type == 'TimeRange') {
+    
+    if (tourConfig.type == 'TimeRange' && tourConfig.name != "less than 2 hours") {
       await this.EatingBreakPopup();
+    }
+    if (tourConfig.type == 'Saved') {
+      if (tourConfig.name == 'remove saved places') {
+        localStorage.removeItem('saveList');
+      }
     }
     let toast = await this.toastCtrl.create({
       message: `${tourConfig.name} set`,
+      color: 'success',
       duration: 2000
     });
     toast.present();

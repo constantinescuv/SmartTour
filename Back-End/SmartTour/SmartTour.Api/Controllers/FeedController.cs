@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartTour.DataAccess;
+using SmartTour.Business;
 using SmartTour.Domain;
-using System;
-using System.Linq;
 
 namespace SmartTour.Api.Controllers
 {
@@ -11,10 +9,11 @@ namespace SmartTour.Api.Controllers
 
     public class FeedController : ControllerBase
     {
-        private readonly DatabaseContext _auc;
-        public FeedController(DatabaseContext auc)
+        private readonly IFeedService _feedService;
+
+        public FeedController(IFeedService feedService)
         {
-            _auc = auc;
+            _feedService = feedService;
         }
 
         [HttpPost("addPost")]
@@ -22,26 +21,22 @@ namespace SmartTour.Api.Controllers
         {
             try
             {
-                post.dt_created = DateTime.Now;
-                _auc.Add(post);
-                _auc.SaveChanges();
+                _feedService.AddPost(post);
+                return Created("addPost", post);
             }
             catch
             {
                 return BadRequest();
             }
 
-            return Created("addPost", post);
         }
 
-        [HttpPost("getPosts")]
-        public IActionResult GetPosts([FromBody] AuthEntity user)
+        [HttpGet("getPosts")]
+        public IActionResult GetPosts(int uid)
         {
             try
             {
-                var dbEntry = _auc.Posts.Where(acc => acc.UserId == user.UserId);
-                
-                return Ok(dbEntry);
+                return Ok(_feedService.GetPosts(uid));
             }
             catch
             {

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using SmartTour.DataAccess;
+﻿using Microsoft.AspNetCore.Mvc;
 using SmartTour.Domain;
-using System.Security.Cryptography;
-using System.Text;
+using SmartTour.Business;
 
 namespace SmartTour.Api.Controllers
 {
@@ -15,10 +8,10 @@ namespace SmartTour.Api.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly DatabaseContext _auc;
-        public AuthController(DatabaseContext auc)
+        private readonly IAuthService _authService;
+        public AuthController(IAuthService authService)
         {
-            _auc = auc;
+            _authService = authService;
         }
 
         [HttpPost("register")]
@@ -26,24 +19,18 @@ namespace SmartTour.Api.Controllers
         {
             try 
             {
-                using (HashAlgorithm alg = SHA256.Create())
+                bool res = _authService.Register(user);
+                if (res == false)
                 {
-                    string password = Encoding.UTF8.GetString(alg.ComputeHash(Encoding.UTF8.GetBytes(user.Passw)));
-                    user.Passw = password;
-
+                    return BadRequest("Email already in use");
                 }
-                user.Image = "https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg";
-                user.PlacesVisited = 0;
-                user.ToursCompleted = 0;
-                _auc.Users.Add(user);
-                _auc.SaveChanges();
+                return Ok();
             }
             catch
             {
                 return BadRequest();
             }
            
-            return Created("register", user);
         }
 
         [HttpPost("login")]
@@ -51,19 +38,12 @@ namespace SmartTour.Api.Controllers
         {
             try
             {
-                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.Email == user.Email);
-                using (HashAlgorithm alg = SHA256.Create())
+                (AuthEntity, bool) res = _authService.Login(user);
+                if (res.Item2 == false)
                 {
-                    string password = Encoding.UTF8.GetString(alg.ComputeHash(Encoding.UTF8.GetBytes(user.Passw)));
-                    user.Passw = password;
-
+                    return NotFound();
                 }
-                if (dbEntry.Passw == user.Passw)
-                {
-                    return Ok(dbEntry);
-                }
-
-                else return BadRequest();
+                else return Ok(res.Item1);
             }
             catch
             {
@@ -72,24 +52,17 @@ namespace SmartTour.Api.Controllers
 
         }
 
-        [HttpPost("edit")]
+        [HttpPatch("edit")]
         public IActionResult Edit([FromBody] EditEntity user)
         {
             try
             {
-                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.Email == user.Email);
-
-                if (dbEntry != null)
+                (AuthEntity, bool) res = _authService.Edit(user);
+                if (res.Item2 == false)
                 {
-                    if (user.FirstName != string.Empty) { dbEntry.FirstName = user.FirstName; }
-                    if (user.LastName != string.Empty) { dbEntry.LastName = user.LastName; }
-                    if (user.Image != string.Empty) { dbEntry.Image = user.Image; }
-                    if (user.ResetTours != 0) { dbEntry.ToursCompleted = 0; }
-                    if (user.ResetPlaces != 0) { dbEntry.PlacesVisited = 0; }
-                    _auc.SaveChanges();
+                    return NotFound();
                 }
-                return Ok(dbEntry);
-                
+                else return Ok(res.Item1);
             }
             catch
             {
@@ -98,20 +71,17 @@ namespace SmartTour.Api.Controllers
 
         }
 
-        [HttpPost("incrementTours")]
+        [HttpPatch("incrementTours")]
         public IActionResult IncrementTours([FromBody] AuthEntity user)
         {
             try
             {
-                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
-
-                if (dbEntry != null)
+                bool res = _authService.IncrementTours(user);
+                if (res == false)
                 {
-                    dbEntry.ToursCompleted += 1;
-                    _auc.SaveChanges();
+                    return NotFound();
                 }
-                return Ok();
-
+                else return Ok();
             }
             catch
             {
@@ -120,20 +90,17 @@ namespace SmartTour.Api.Controllers
 
         }
 
-        [HttpPost("incrementPlaces")]
+        [HttpPatch("incrementPlaces")]
         public IActionResult IncrementPlaces([FromBody] AuthEntity user)
         {
             try
             {
-                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
-
-                if (dbEntry != null)
+                bool res = _authService.IncrementPlaces(user);
+                if (res == false)
                 {
-                    dbEntry.PlacesVisited += 1;
-                    _auc.SaveChanges();
+                    return NotFound();
                 }
-                return Ok();
-
+                else return Ok();
             }
             catch
             {
@@ -142,15 +109,13 @@ namespace SmartTour.Api.Controllers
 
         }
 
-        [HttpPost("refreshProfile")]
-        public IActionResult RefreshProfile([FromBody] AuthEntity user)
+        [HttpGet("refreshProfile")]
+        public IActionResult RefreshProfile(int uid)
         {
             try
             {
-                var dbEntry = _auc.Users.FirstOrDefault(acc => acc.UserId == user.UserId);
-
-                return Ok(dbEntry);
-
+                AuthEntity res = _authService.Refresh(uid);
+                return Ok(res);
             }
             catch
             {

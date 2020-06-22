@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
     passw: ''
     };
     
+  
   constructor(private authservice: AuthService, private navController: NavController, private toastController: ToastController) {}
     
   ngOnInit() {
@@ -35,28 +36,70 @@ export class RegisterPage implements OnInit {
     toast.present();
   }
     
-  validateInputs() {
+  async validateInputs() {
     let firstName = this.postData.firstName.trim();
     let lastName = this.postData.lastName.trim();
     let password = this.postData.passw.trim();
     let email = this.postData.email.trim();
 
-    return (
-    firstName.length > 0 &&
-    firstName.length < 100 &&
-    lastName.length > 0 &&
-    lastName.length < 100 &&
-    email.length > 0 &&
-    email.length < 100 &&
-    password.length > 0 &&
-    password.length < 100 &&
-    email.includes("@") &&
-    email.includes(".")
-    );
+    var valid = true;
+
+    if (!/^[a-zA-Z]+$/.test(firstName) || firstName.length <= 0 || firstName.length >= 100){
+      const toast = await this.toastController.create({
+        message: 'First name must not contain digits or symbols!',
+        color: 'danger',
+        duration: 2000
+      });
+      valid = false;
+
+      setTimeout(function () {
+        toast.present();
+      }, 4000);
+    }
+    if (!/^[a-zA-Z]+$/.test(lastName) || lastName.length <= 0 || lastName.length >= 100){
+      const toast = await this.toastController.create({
+        message: 'Last name must not contain digits or symbols!',
+        color: 'danger',
+        duration: 2000
+      });
+      valid = false;
+
+      setTimeout(function () {
+        toast.present();
+      }, 6000);
+    }
+    if (!email.includes("@") || !email.includes(".") || email.length < 5 || email.length >= 100){
+      const toast = await this.toastController.create({
+        message: 'Enter a valid email!',
+        color: 'danger',
+        duration: 2000
+      });
+      valid = false;
+
+      setTimeout(function () {
+        toast.present();
+      }, 8000);
+    }
+    if (password.length < 6 || password.length >= 100 || !/\d/.test(password)){
+      const toast = await this.toastController.create({
+        message: 'Password must be at least 6 characters long and contain at least one number!',
+        color: 'danger',
+        duration: 2000
+      });
+      valid = false;
+
+      setTimeout(function () {
+        toast.present();
+      }, 3000);
+    }
+    
+    return valid;
   }
     
   async signupAction() {
-    if (!this.validateInputs()) {
+    var resp = await this.validateInputs();
+    console.log(resp);
+    if (!resp) {
       const toast = await this.toastController.create({
         message: 'Invalid inputs!',
         color: 'danger',
@@ -79,7 +122,6 @@ export class RegisterPage implements OnInit {
 
         this.navController.navigateForward(['login'], { animated: false });
       } catch {
-        
         const toast = await this.toastController.create({
           message: 'Error while registering!',
           color: 'danger',

@@ -74,6 +74,57 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** gold **/
+  --ion-color-gold: #ffd700;
+  --ion-color-gold-rgb: 255,215,0;
+  --ion-color-gold-contrast: #000000;
+  --ion-color-gold-contrast-rgb: 0,0,0;
+  --ion-color-gold-shade: #e0bd00;
+  --ion-color-gold-tint: #ffdb1a;
+
+  /** silver **/
+  --ion-color-silver: #c4cace;
+  --ion-color-silver-rgb: 196,202,206;
+  --ion-color-silver-contrast: #000000;
+  --ion-color-silver-contrast-rgb: 0,0,0;
+  --ion-color-silver-shade: #acb2b5;
+  --ion-color-silver-tint: #cacfd3;
+
+  /** bronze **/
+  --ion-color-bronze: #a97142;
+  --ion-color-bronze-rgb: 169,113,66;
+  --ion-color-bronze-contrast: #ffffff;
+  --ion-color-bronze-contrast-rgb: 255,255,255;
+  --ion-color-bronze-shade: #95633a;
+  --ion-color-bronze-tint: #b27f55;
+}
+
+.ion-color-gold {
+  --ion-color-base: var(--ion-color-gold);
+  --ion-color-base-rgb: var(--ion-color-gold-rgb);
+  --ion-color-contrast: var(--ion-color-gold-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gold-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gold-shade);
+  --ion-color-tint: var(--ion-color-gold-tint);
+}
+
+.ion-color-silver {
+  --ion-color-base: var(--ion-color-silver);
+  --ion-color-base-rgb: var(--ion-color-silver-rgb);
+  --ion-color-contrast: var(--ion-color-silver-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-silver-contrast-rgb);
+  --ion-color-shade: var(--ion-color-silver-shade);
+  --ion-color-tint: var(--ion-color-silver-tint);
+}
+
+.ion-color-bronze {
+  --ion-color-base: var(--ion-color-bronze);
+  --ion-color-base-rgb: var(--ion-color-bronze-rgb);
+  --ion-color-contrast: var(--ion-color-bronze-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-bronze-contrast-rgb);
+  --ion-color-shade: var(--ion-color-bronze-shade);
+  --ion-color-tint: var(--ion-color-bronze-tint);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -243,6 +294,10 @@ ion-popover{
       max-width:600px;
     }
   }
+}
+
+ion-content {
+  contain: size style;
 }
 
 // .backdrop-no-scroll ion-content {

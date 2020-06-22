@@ -14,8 +14,7 @@ namespace SmartTour.Business.Funct
             tour.RemoveNulls();
             int maxDistance;
 			int maxTime;
-            int currentTime = 0; //in minutes
-            int currentLength = 0; //in km
+			double transportModifier;
 			using (StreamReader r = new StreamReader("F:/SmartTour/Front-End/smart-tour/src/assets/subtypeConfig.json"))
 			{
 				string json = r.ReadToEnd();
@@ -34,6 +33,22 @@ namespace SmartTour.Business.Funct
 						break;
 					default:
 						maxDistance = 30;
+						break;
+				}
+
+				switch (tourDetails.Transport)
+				{
+					case "by personal car":
+						transportModifier = 1.5;
+						break;
+					case "by bycicle":
+						transportModifier = 0.9;
+						break;
+					case "by foot":
+						transportModifier = 0.6;
+						break;
+					default:
+						transportModifier = 1;
 						break;
 				}
 
@@ -81,7 +96,14 @@ namespace SmartTour.Business.Funct
 				{
 					if (place is AttractionEntity)
 					{
-						timeList[t] = subtypeData.time[((AttractionEntity)place).Subtype[0]["name"]];
+						if (subtypeData.time.ContainsKey(((AttractionEntity)place).Subtype[0]["name"]))
+						{ 
+							timeList[t] = subtypeData.time[((AttractionEntity)place).Subtype[0]["name"]];
+						}
+						else
+						{
+							timeList[t] = subtypeData.time["default"];
+						}
 
 						ratingList[t] = 1 + (ratingMean - double.Parse(place.Rating, System.Globalization.CultureInfo.InvariantCulture)) / 2.5;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedService } from 'src/app/services/feed.service';
-import { AlertController, NavController, ToastController, ActionSheetController, PopoverController } from '@ionic/angular';
+import { AlertController, NavController, ToastController, ActionSheetController, PopoverController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { DescriptionComponent } from 'src/app/components/description/description.component';
@@ -30,6 +30,7 @@ export class TourPage implements OnInit {
     checkpointNames: '',
     place: ''
     };
+  directions = [];
   colors = ['primary', 'secondary', 'tertiary'];
 
   constructor(private alertController: AlertController, 
@@ -41,21 +42,86 @@ export class TourPage implements OnInit {
               private http: HttpClient,
               private popoverController: PopoverController,
               private callNumber: CallNumber,
-              private emailComposer: EmailComposer) { 
+              private emailComposer: EmailComposer,
+              private loader: LoadingController) { 
     
   }
 
   async ngOnInit() {
-    this.tour = JSON.parse(localStorage.getItem('tour'))['tour'];
-    this.tour[0].open = true;
-    this.backup = JSON.parse(localStorage.getItem('tour'))['backup'];
-    this.http.get('assets/subtypeConfig.json').subscribe(res => {
-      this.icons = res['icons'];
-    });
-    if (JSON.parse(localStorage.getItem('tour'))['restaurantPosition'] != -1) {
-      this.tour.splice(JSON.parse(localStorage.getItem('tour'))['restaurantPosition'], 0, JSON.parse(localStorage.getItem('tour'))['restaurants'][0]);
-      this.tour[JSON.parse(localStorage.getItem('tour'))['restaurantPosition']]['subtype'] = [{'name': 'restaurant'}];
+    if(!localStorage.getItem('user')) {
+      this.navController.navigateForward(['login'], { animated: false });
+      this.notLoggedInToast();
     }
+    else {
+      this.displayLoader()
+        .then((loader: any) => {
+
+          this.tour = JSON.parse(localStorage.getItem('tour'))['tour'];
+          this.backup = JSON.parse(localStorage.getItem('tour'))['backup'];
+
+          if (JSON.parse(localStorage.getItem('completed')) != null && JSON.parse(localStorage.getItem('skipped')) != null && JSON.parse(localStorage.getItem('open')) != null) {
+            this.tour[0].open = false;
+            this.tour[JSON.parse(localStorage.getItem('open'))].open = true;
+            this.completed = JSON.parse(localStorage.getItem('completed'));
+            this.skipped = JSON.parse(localStorage.getItem('skipped'));
+          }
+          else {
+            this.tour[0].open = true;
+            localStorage.setItem('open', JSON.stringify(0));
+            localStorage.setItem('completed', JSON.stringify(this.completed));
+            localStorage.setItem('skipped', JSON.stringify(this.skipped));
+          }
+
+          this.http.get('assets/subtypeConfig.json').subscribe(res => {
+            this.icons = res['icons'];
+          });
+
+          if (JSON.parse(localStorage.getItem('tour'))['restaurants'][0] != null)
+          {
+            var restaurant = JSON.parse(localStorage.getItem('tour'))['restaurants'][0];
+            var found = false;
+            for(var i = 0; i < this.tour.length; i++) {
+              if (this.tour[i].name == restaurant.name) {
+                  found = true;
+                  break;
+              }
+            }
+            if (JSON.parse(localStorage.getItem('tour'))['restaurantPosition'] != -1 && found == false) {
+              this.tour.splice(JSON.parse(localStorage.getItem('tour'))['restaurantPosition'], 0, JSON.parse(localStorage.getItem('tour'))['restaurants'][0]);
+              this.tour[JSON.parse(localStorage.getItem('tour'))['restaurantPosition']]['subtype'] = [{'name': 'restaurant'}];
+            }
+          }
+          
+          for (var i = 0; i < this.tour.length; i++) {
+            this.directions[i] = 'https://www.google.com/maps/dir/' + localStorage.getItem('Latitude') + ',+' + localStorage.getItem('Longitude') + '/' + this.tour[i].latitude + ',+' + this.tour[i].longitude;
+          }
+          loader.dismiss();
+        })
+        .catch(err => {
+          console.log('got here error');
+          //close loader + return Null
+          this.loader.dismiss();
+          return null;
+        });
+    }
+  }
+
+  async notLoggedInToast() {
+    const toast = await this.toastController.create({
+      message: 'You are not logged in!',
+      color: 'danger',
+      duration: 2000
+    });
+
+    toast.present();
+  }
+
+  async displayLoader() {
+    const loading = await this.loader.create({
+      message: 'Loading'
+    });
+    await loading.present();
+    return loading;
   }
 
   async expand(index) {
@@ -96,6 +162,9 @@ export class TourPage implements OnInit {
         });
 
         localStorage.removeItem('tour');
+        localStorage.removeItem('skipped');
+        localStorage.removeItem('completed');
+        localStorage.removeItem('open');
 
         toast.present();
 
@@ -117,6 +186,7 @@ export class TourPage implements OnInit {
         });
 
         this.completed[i] = true;
+        localStorage.setItem('completed', JSON.stringify(this.completed));
         this.authService.incrementPlaces(JSON.parse(localStorage.getItem("user")));
         this.toggleSection(i);
         if(i + 1 < this.tour.length){
@@ -125,6 +195,7 @@ export class TourPage implements OnInit {
           }
           else{
             this.toggleSection(i + 1);
+            localStorage.setItem('open', JSON.stringify(i + 1));
           }
         }
         toast.present();
@@ -148,6 +219,9 @@ export class TourPage implements OnInit {
       var buttons = [
         { text: 'Yes', handler: async () => {
           localStorage.removeItem('tour');
+          localStorage.removeItem('open');
+          localStorage.removeItem('completed');
+          localStorage.removeItem('skipped');
           const toast = await this.toastController.create({
             message: 'Tour completed!',
             color: 'success',
@@ -271,8 +345,16 @@ export class TourPage implements OnInit {
       text: this.backup[index][i].name,
       icon: 'arrow-forward',
       handler: () => {
-        console.log(i);
+        var aux = this.tour[index];
         this.tour[index] = this.backup[index][i];
+        this.backup[index][i] = aux;
+        var localTour = JSON.parse(localStorage.getItem('tour'));
+        localTour['tour'] = this.tour;
+        localTour['backup'] = this.backup;
+        localStorage.setItem('tour', JSON.stringify(localTour));
+        this.toggleSection(index);
+        console.log(this.tour);
+
       }
     };
     return button
@@ -300,6 +382,8 @@ export class TourPage implements OnInit {
       role: 'destructive',
       handler: async () => {
         this.skipped[i] = true;
+        localStorage.setItem('skipped', JSON.stringify(this.skipped));
+
         const toast = await this.toastController.create({
           message: 'Checkpoint skipped!',
           color: 'danger',
@@ -310,6 +394,7 @@ export class TourPage implements OnInit {
         this.toggleSection(i);
         if(i + 1 < this.tour.length){
           this.toggleSection(i + 1);
+          localStorage.setItem('open', JSON.stringify(i + 1));
         }
         toast.present();
       }

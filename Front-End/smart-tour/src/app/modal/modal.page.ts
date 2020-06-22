@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController, NavController, ActionSheetController } from '@ionic/angular';
+import { ModalController, ToastController, NavController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { TourService } from '../services/tour.service';
 
@@ -14,6 +14,7 @@ export class ModalPage implements OnInit {
   
   automaticClose = true;
 
+  resetPlaces: boolean;
   postData = {
     Transport: '',
     TimeRange: '',
@@ -23,12 +24,14 @@ export class ModalPage implements OnInit {
     EatingBreak: false,
     savedPlaces: ''
   };
+  private loading;
 
   constructor(private modalController: ModalController, 
     private http: HttpClient, 
     private toastController: ToastController,
     private tourService: TourService,
-    private navController: NavController) 
+    private navController: NavController,
+    private loadingCtrl: LoadingController) 
     {
     this.http.get('assets/tourConfig.json').subscribe(res => {
       this.information = res['items'];
@@ -54,8 +57,17 @@ export class ModalPage implements OnInit {
   }
 
   async configureTour() {
+
+    this.loadingCtrl.create({
+      message: 'Generating Tour...'
+    }).then((overlay) => {
+      this.loading = overlay;
+      this.loading.present();
+    });
+
     if (localStorage.getItem("Latitude") === null || localStorage.getItem("Longitude") === null)
     {
+      this.loading.dismiss();
       const toast = await this.toastController.create({
         message: 'Error! No location data..',
         color: 'danger',
@@ -66,6 +78,7 @@ export class ModalPage implements OnInit {
     }
     else if (localStorage.getItem("Transport") === null || localStorage.getItem("TimeRange") === null || localStorage.getItem("DistanceRange") === null) 
     {
+      this.loading.dismiss();
       const toast = await this.toastController.create({
         message: 'Error! Reconfigure tour details..',
         color: 'danger',
@@ -85,32 +98,35 @@ export class ModalPage implements OnInit {
       
       if (parseInt(this.postData.TimeRange.match(/(\d+)/)[0]) * 60 > 240) {
         this.postData.EatingBreak = localStorage.getItem('EatingBreak') == 'true';
-        try { 
-          const res = await this.tourService.generateTour(this.postData);
-    
-          const toast = await this.toastController.create({
-            message: 'Tour created succesfully!',
-            color: 'success',
-            duration: 2000
-          });
-    
-          toast.present();
-    
-          localStorage.setItem('tour', JSON.stringify(res.body));
-    
-          this.navController.navigateForward(['tour'], { animated: false });
+      }
+      else this.postData.EatingBreak = false;
+      try { 
+        const res = await this.tourService.generateTour(this.postData);
   
-          this.closeModal();
-        } catch {
-    
-          const toast = await this.toastController.create({
-            message: 'Error! Something went wrong with the tour generation..',
-            color: 'danger',
-            duration: 2000
-          });
-    
-          toast.present();
-        }
+        this.loading.dismiss();
+
+        const toast = await this.toastController.create({
+          message: 'Tour created succesfully!',
+          color: 'success',
+          duration: 2000
+        });
+  
+        toast.present();
+  
+        localStorage.setItem('tour', JSON.stringify(res.body));
+        
+        this.navController.navigateForward(['tour'], { animated: false });
+
+        this.closeModal();
+      } catch {
+        this.loading.dismiss();
+        const toast = await this.toastController.create({
+          message: 'Error! Something went wrong with the tour generation..',
+          color: 'danger',
+          duration: 2000
+        });
+  
+        toast.present();
       }
     }
     

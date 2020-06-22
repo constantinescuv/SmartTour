@@ -13,7 +13,9 @@
   <ion-list *ngFor="let item of tour; let i = index;" class="accordion-list" lines="none" detail="false" no-padding>
     <ion-item tappable (click)="toggleSection(i)" [ngClass]="{'section-active': item.open, 'section': !item.open}">
       
-      <ion-icon slot="start" src='{{ icons[item.subtype[0].name] }}' *ngIf="icons"></ion-icon>
+      
+      <ion-icon slot="start" src='{{ icons[item.subtype[0].name] }}' *ngIf="icons && icons[item.subtype[0].name]"></ion-icon>
+      <ion-icon slot="start" src='{{ icons["default"] }}' *ngIf="icons && !icons[item.subtype[0].name]"></ion-icon>
       <!-- <ion-icon slot="start" name="arrow-forward" *ngIf="!item.open"></ion-icon> -->
       <!-- <ion-icon slot="start" name="arrow-down" *ngIf="item.open"></ion-icon> -->
       <ion-label>
@@ -54,7 +56,12 @@
                       </ion-chip>
                     </div>
                   </ng-template>
-
+                </ion-col>
+                <ion-col size="12">
+                  <ion-button size="large" href='{{ directions[i] }}'>
+                    Directions
+                    <ion-icon name="navigate-circle"></ion-icon>
+                  </ion-button>
                 </ion-col>
                 <ion-col size="12">
                   <p text-lowercase color="medium">{{ item.address }}</p>
@@ -128,5 +135,3 @@
   
   <ion-button expand="block" share="round" color="primary" (click)="finishAlert()">Finish Tour</ion-button>
 </ion-content>
-
-

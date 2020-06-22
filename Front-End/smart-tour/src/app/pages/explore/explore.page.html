@@ -7,8 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="(coordinates|async) as coords"></div>
-
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Explore</ion-title>
@@ -31,29 +29,65 @@
 
   <div *ngIf="exploreList">
     <ion-card *ngFor="let place of exploreList; let i = index;">
-      <img class="img-wrapper" src={{place.photo.images.medium.url}}>
-      <div>
-        <ion-fab horizontal="end" vertical="top" slot="fixed">
-          <ion-fab-button color="light" (click)="savePlace(i)">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
+      <div *ngIf="!promotedType[place.name]">
+        <img class="img-wrapper" src={{place.photo.images.medium.url}}>
+        <div>
+          <ion-fab horizontal="end" vertical="top" slot="fixed">
+            <ion-fab-button color="light" (click)="savePlace(i)">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+        <ion-item lines="none">
+          <ion-card-header>
+            <ion-card-subtitle *ngIf="place.rating">{{place.rating}} <ion-icon *ngIf="place.rating" name="star"></ion-icon></ion-card-subtitle>
+            <ion-card-title>{{place.name}}</ion-card-title>
+            <ion-card-subtitle>{{place.address}}</ion-card-subtitle>
+          </ion-card-header>
+          
+        </ion-item>
+        <ion-item lines="none" class="tour">
+          
+          <ion-card-content>
+            {{place.description}}
+          </ion-card-content>
+          
+        </ion-item>
       </div>
-      <ion-item lines="none">
-        <ion-card-header>
-          <ion-card-subtitle *ngIf="place.rating">{{place.rating}} <ion-icon *ngIf="place.rating" name="star"></ion-icon></ion-card-subtitle>
-          <ion-card-title>{{place.name}}</ion-card-title>
-          <ion-card-subtitle>{{place.address}}</ion-card-subtitle>
-        </ion-card-header>
-        
-      </ion-item>
-      <ion-item lines="none" class="tour">
-        
-        <ion-card-content>
-          {{place.description}}
-        </ion-card-content>
-        
-      </ion-item>
+
+      <div *ngIf="promotedType[place.name]">
+        <img class="img-wrapper" src={{place.photo.images.medium.url}}>
+        <div>
+          <ion-fab horizontal="start" vertical="top" slot="fixed">
+            <ion-fab-button [color]="promotedType[place.name]">
+              <ion-icon name="star"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+        <div>
+          <ion-fab horizontal="end" vertical="top" slot="fixed">
+            <ion-fab-button color="light" (click)="savePlace(i)">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </div>
+        <ion-item lines="none">
+          <ion-card-header>
+            <ion-card-subtitle *ngIf="place.rating">{{place.rating}} <ion-icon *ngIf="place.rating" name="star"></ion-icon></ion-card-subtitle>
+            <ion-card-title>{{place.name}}</ion-card-title>
+            <ion-card-subtitle>{{place.address}}</ion-card-subtitle>
+          </ion-card-header>
+          
+        </ion-item>
+        <ion-item lines="none" class="tour">
+          
+          <ion-card-content>
+            {{place.description}}
+          </ion-card-content>
+          
+        </ion-item>
+      </div>
+      
       
       <!-- <img class="tour-img" src={{item.images[0]}} (click)="expand(item)"> -->
     </ion-card>

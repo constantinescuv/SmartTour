@@ -1,0 +1,9 @@
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\bin\Release\netcoreapp3.1\SmartTour.Domain.deps.json
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\bin\Release\netcoreapp3.1\SmartTour.Domain.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\bin\Release\netcoreapp3.1\SmartTour.Domain.pdb
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.csprojAssemblyReference.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.csproj.CoreCompileInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.AssemblyInfoInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.AssemblyInfo.cs
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Domain\obj\Release\netcoreapp3.1\SmartTour.Domain.pdb

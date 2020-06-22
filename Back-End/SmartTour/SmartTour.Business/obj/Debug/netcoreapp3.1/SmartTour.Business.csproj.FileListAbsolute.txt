@@ -21,3 +21,5 @@ F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\Smart
 F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.dll
 F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.pdb
 F:\SmartTour\Back-End\SmartTour\SmartTour.Business\obj\Debug\netcoreapp3.1\SmartTour.Business.csproj.CoreCompileInputs.cache
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.dll
+F:\SmartTour\Back-End\SmartTour\SmartTour.Business\bin\Debug\netcoreapp3.1\SmartTour.DataAccess.pdb

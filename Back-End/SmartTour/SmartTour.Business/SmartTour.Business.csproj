@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartTour.DataAccess\SmartTour.DataAccess.csproj" />
     <ProjectReference Include="..\SmartTour.Domain\SmartTour.Domain.csproj" />
   </ItemGroup>
 

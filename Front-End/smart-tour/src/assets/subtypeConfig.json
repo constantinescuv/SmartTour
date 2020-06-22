@@ -25,7 +25,8 @@
         "Visitor Centers": "assets/icon/visitor.svg",
         "Libraries": "assets/icon/library.svg",
         "Water Parks": "assets/icon/slide.svg",
-        "Theme Parks": "assets/icon/themepark.svg"
+        "Theme Parks": "assets/icon/themepark.svg",
+        "default": "assets/icon/pin.svg"
     },
     "time":
     {
@@ -52,7 +53,8 @@
         "Visitor Centers": 45,
         "Libraries": 30,
         "Water Parks": 90,
-        "Theme Parks": 90
+        "Theme Parks": 90,
+        "default": 45
     },
     "is_outdoor":
     {
@@ -79,7 +81,8 @@
         "Visitor Centers": false,
         "Libraries": false,
         "Water Parks": true,
-        "Theme Parks": true
+        "Theme Parks": true,
+        "default": true
     },
     "season":
     {
@@ -106,7 +109,8 @@
         "Visitor Centers": "both",
         "Libraries": "both",
         "Water Parks": "hot",
-        "Theme Parks": "both"
+        "Theme Parks": "both",
+        "default": "both"
     },
     "chips": 
     {

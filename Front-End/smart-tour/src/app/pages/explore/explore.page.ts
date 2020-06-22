@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, ToastController, LoadingController } from '@ionic/angular';
-import { GeolocationPosition, Plugins, Capacitor } from '@capacitor/core';
-import { Observable, of, from as fromPromise } from 'rxjs';
-import { switchMap, tap, map } from 'rxjs/operators';
 import { ExploreService } from 'src/app/services/explore.service';
-
-const { Toast, Geolocation } = Capacitor.Plugins;
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { PromotedService } from 'src/app/services/promoted.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-explore',
@@ -13,12 +11,13 @@ const { Toast, Geolocation } = Capacitor.Plugins;
   styleUrls: ['./explore.page.scss'],
 })
 export class ExplorePage {
-  public coordinates: Observable<GeolocationPosition>;
   public defaultPos: { latitude: 42, longitude: 42 };
 
   exploreList: any;
+  promotedList: any;
+  promotedType = {};
 
-  constructor(public loading: LoadingController, private navController: NavController, private toastController: ToastController, private exploreService: ExploreService) { }
+  constructor(public loading: LoadingController, private navController: NavController, private toastController: ToastController, private exploreService: ExploreService, public geolocation: Geolocation, private promotedService: PromotedService) { }
 
   ngOnInit() {
     if(!localStorage.getItem('user')) {
@@ -31,14 +30,39 @@ export class ExplorePage {
       }
       this.displayLoader()
         .then((loader: any) => {
+
           //get position
-          return this.getCurrentPosition()
-            .then(position => {
+          return this.geolocation.getCurrentPosition({
+            timeout: 10000,
+            enableHighAccuracy: false
+          })
+            .then(async position => {
               //close the loader + return position
+              await this.explore(position.coords);
+              this.promotedService.getPromotedPlaces().snapshotChanges().pipe(
+                map(changes =>
+                  changes.map(c =>
+                    ({ key: c.payload.doc.id, ...c.payload.doc.data() })
+                  )
+                )
+              ).subscribe(promotions => {
+                this.promotedList = promotions;
+                for (var i = 0; i < promotions.length; i++) {
+                  this.promotedType[promotions[i].placeName] = promotions[i].tierType;
+                }
+                for (var i = 0; i < this.exploreList.length; i++) {
+                  var aux = this.exploreList[i];
+                  if (this.promotedType[aux.name]) {
+                    this.exploreList.splice(i, 1);
+                    this.exploreList.splice(0, 0, aux);
+                  } 
+                }
+              });
               loader.dismiss();
               return position;
             })
             .catch(err => {
+              console.log('got here error');
               //close loader + return Null
               loader.dismiss();
               return null;
@@ -64,26 +88,6 @@ export class ExplorePage {
     });
     await loading.present();
     return loading;
-  }
-
-  private async getCurrentPosition(): Promise<any> {
-    const isAvailable: boolean = Capacitor.isPluginAvailable('Geolocation');
-    if (!isAvailable) {
-      console.log('Err: plugin is not available');
-      return of(new Error('Err: plugin is not available'));
-    }
-    const POSITION = Plugins.Geolocation.getCurrentPosition()
-    .catch(err => {
-      console.log('ERR', err);
-      return new Error(err.message || 'msg');
-    });
-    
-    this.coordinates = fromPromise(POSITION).pipe(
-      switchMap((data: any) => of(data.coords)),
-      tap(data => this.explore(data))
-    );
-    
-    return POSITION;
   }
 
   private async explore(data){
@@ -113,7 +117,7 @@ export class ExplorePage {
       var saveList = JSON.parse(localStorage.getItem('saveList'));
       var found = false;
       for (var place in saveList) {
-        if (saveList[place]['name'] == this.exploreList[index].name) {
+        if (saveList[place] == this.exploreList[index].name) {
           found = true;
         }
       }

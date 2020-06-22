@@ -122,6 +122,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj": {
+                "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.DataAccess\\SmartTour.DataAccess.csproj"
+              },
               "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj": {
                 "projectPath": "F:\\SmartTour\\Back-End\\SmartTour\\SmartTour.Domain\\SmartTour.Domain.csproj"
               }

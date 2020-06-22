@@ -22,10 +22,21 @@ namespace SmartTour.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
-            services.AddTransient<DatabaseContext>();
+            services.AddDbContext<UsersRepository>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
+            services.AddDbContext<PostsRepository>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
+            services.AddTransient<UsersRepository>();
+            services.AddTransient<PostsRepository>();
             services.AddSingleton<ITourService, TourService>();
             services.AddSingleton<IGetTour, GetTour>();
+            services.AddTransient<IRegister, Register>();
+            services.AddTransient<ILogin, Login>();
+            services.AddTransient<IEdit, Edit>();
+            services.AddTransient<IIncrement, Increment>();
+            services.AddTransient<IRefreshProfile, RefreshProfile>();
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IAddPost, AddPost>();
+            services.AddTransient<IGetPosts, GetPosts>();
+            services.AddTransient<IFeedService, FeedService>();
             services.AddSingleton<IExploreService, ExploreService>();
             services.AddSingleton<IGetExploreList, GetExploreList>();
             services.AddControllers();
