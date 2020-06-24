@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyAThBDEu9wiBUpN-L9WTYRw2Lhb8ZbNU2o",
+    apiKey: "",
     authDomain: "smart-tour-273515.firebaseapp.com",
     databaseURL: "https://smart-tour-273515.firebaseio.com",
     projectId: "smart-tour-273515",
